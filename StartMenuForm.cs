@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace game
 {
-    public partial class Form1 : Form
+    public partial class StartMenuForm : Form
     {
-        public Form1()
+        public StartMenuForm()
         {
             InitializeComponent();
         }

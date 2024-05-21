@@ -51,11 +51,11 @@
     <Compile Include="BugParts.cs" />
     <Compile Include="BugState.cs" />
     <Compile Include="Dice.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="StartMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="StartMenuForm.Designer.cs">
+      <DependentUpon>StartMenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Game.cs" />
     <Compile Include="GameEventArgs.cs" />
@@ -80,8 +80,8 @@
     <Compile Include="RollResultPart.cs" />
     <Compile Include="Round.cs" />
     <Compile Include="Turn.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="StartMenuForm.resx">
+      <DependentUpon>StartMenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GameField.resx">
       <DependentUpon>GameField.cs</DependentUpon>
