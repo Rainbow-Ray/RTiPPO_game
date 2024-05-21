@@ -167,10 +167,11 @@ namespace game
         {
             var round = getLastRound();
             var turn = round.getLastTurn();
-            var isAdded = round.throwDice(dice);
-            var a = gameProcess.throwDice(turn, isAdded);
+            turn.rollDice(dice);
+            var isPartAdded = turn.addPart();
+            gameProcess.throwDice(turn, isPartAdded);
 
-            nextMove(isAdded, turn);
+            nextMove(isPartAdded, turn);
         }
 
         internal void nextMove(bool isPartAdded, Turn turn)

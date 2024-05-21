@@ -17,7 +17,7 @@ namespace game
             currentPlayer = player;
         }
 
-        public IRollResult getRollResult(Dice dice)
+        public IRollResult rollDice(Dice dice)
         {
             rollResult = dice.Roll();
             return rollResult;

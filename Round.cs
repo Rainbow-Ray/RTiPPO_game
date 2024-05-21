@@ -19,13 +19,5 @@ namespace game
         internal Turn getLastTurn() {
             return turnsOfPlayer.Last();
         }
-
-        internal bool throwDice(Dice dice)
-        {
-            var turn = getLastTurn();
-            turn.getRollResult(dice);
-            var isPartAdded = turn.addPart();
-            return isPartAdded;
-        }
     }
 }
