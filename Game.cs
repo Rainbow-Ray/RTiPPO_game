@@ -18,7 +18,7 @@ namespace game
         private List<Player> winners = new List<Player>();
 
         private Dice dice { get; set; }
-        private GameProcess gameProcess { get; set; }
+        public GameProcess gameProcess { get; private set; }
 
         public Game(bool isTurnContinuous, bool isPointsToWin, int numberOfPointsToWin) {
             this.isTurnContinuous = isTurnContinuous;
@@ -31,14 +31,10 @@ namespace game
             {
                 this.numberOfBugsToWin = numberOfPointsToWin;
             }
+            gameProcess = new GameProcess();
         }
 
-        public GameProcess createGameProcess(Dice dice) {
-            gameProcess = new GameProcess(dice);
-            return gameProcess;
-        }
-
-        internal void addPlayers(ListBox.ObjectCollection items)
+        public void addPlayers(ListBox.ObjectCollection items)
         {
             var playerList = new List<Player>();
             foreach (var player in items)

@@ -17,35 +17,33 @@ namespace game
 {
     public partial class GameField : Form
     {
-        Game gameProperties;
-        Dice dice;
+        Game game;
         List<Label> bugLabels = new List<Label>();
         List<Panel> panels = new List<Panel>();
-        GameProcess game;
+        GameProcess gameProcess;
 
         public GameField()
         {
             InitializeComponent();
         }
 
-        public GameField(Game newGame, Dice dice)
+        public GameField(Game newGame)
         {
             InitializeComponent();
 
-            gameProperties = newGame;
-            this.dice = dice;
-            game = gameProperties.createGameProcess(dice);
+            game = newGame;
+            gameProcess = game.gameProcess;
 
-            game.WonGame += Game_WonGame;
-            game.NeedNewRound += Game_NeedNewRound;
-            game.NeedNewTurn += Game_NeedNewTurn;
-            game.LabelChange += Game_LabelChange;
-            game.LabelUpdate += Game_LabelUpdate;
-            game.DrawBug += Game_DrawBug;
-            game.Wait += Game_Wait;
-            game.WonRound += Game_WonRound;
+            gameProcess.WonGame += Game_WonGame;
+            gameProcess.NeedNewRound += Game_NeedNewRound;
+            gameProcess.NeedNewTurn += Game_NeedNewTurn;
+            gameProcess.LabelChange += Game_LabelChange;
+            gameProcess.LabelUpdate += Game_LabelUpdate;
+            gameProcess.DrawBug += Game_DrawBug;
+            gameProcess.Wait += Game_Wait;
+            gameProcess.WonRound += Game_WonRound;
 
-            gameProperties.StartGame();
+            game.StartGame();
         }
 
         private void Game_WonRound(object sender, GameEventArgs e)
@@ -148,15 +146,15 @@ namespace game
             var x = 13;
             var isBigRes = true;
             var bigResYDiff = 1.25;
-            var panelLabelcoords = getCoords(x, 270, 150, 200, gameProperties.playerList.Count, true);
-            var panelncoords = getCoords(x, 295, 150, 200, gameProperties.playerList.Count, true);
-            var panelBugncoords = getCoords(x, 285, 150, 200, gameProperties.playerList.Count, true);
-            if (gameProperties.playerList.Count > 4)
+            var panelLabelcoords = getCoords(x, 270, 150, 200, game.playerList.Count, true);
+            var panelncoords = getCoords(x, 295, 150, 200, game.playerList.Count, true);
+            var panelBugncoords = getCoords(x, 285, 150, 200, game.playerList.Count, true);
+            if (game.playerList.Count > 4)
             {
                 this.Height += 200;
             }
          
-            foreach (var player in gameProperties.playerList)
+            foreach (var player in game.playerList)
             {
                 Label panelLabeln = new Label();
                 this.Controls.Add(panelLabeln);
@@ -221,7 +219,7 @@ namespace game
 
         private void button1_Click(object sender, EventArgs e)
         {
-            gameProperties.throwDice();
+            game.throwDice();
         }
 
         private void Wait(int time)

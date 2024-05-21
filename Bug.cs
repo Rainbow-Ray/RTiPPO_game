@@ -16,7 +16,6 @@ namespace game
             this.state = BugState.no_body;
         }
 
-
         public BugState getState(){ return state; }
 
         public bool changeState(BugPart result)

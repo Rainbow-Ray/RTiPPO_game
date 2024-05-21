@@ -23,24 +23,24 @@
   <Class Name="game.Dice">
     <Position X="5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ABAAAAAAAAAAEAAABCAAKAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAEAAAACAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Dice.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="parts" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="game.Form1" Collapsed="true">
-    <Position X="14.75" Y="4.5" Width="1.5" />
+  <Class Name="game.StartMenuForm" Collapsed="true">
+    <Position X="15.25" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAIAAAAAEQAAAAAAAA=</HashCode>
-      <FileName>Form1.cs</FileName>
+      <FileName>StartMenuForm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="game.Game" Collapsed="true">
     <Position X="8" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAARgwQiQgAAAAkgQhQAABSAAAIAAAAAIgA=</HashCode>
+      <HashCode>AQAAAAAAAAARgwQiQgAAAAEgQhQAABSAAAIAAAAAIgA=</HashCode>
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -53,7 +53,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="game.GameEventArgs" Collapsed="true">
-    <Position X="0.5" Y="1.5" Width="1.5" />
+    <Position X="3.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CAAAAAACAAAAAAAABAAAAAAAAAAAAAABAAABAAAAAAA=</HashCode>
       <FileName>GameEventArgs.cs</FileName>
@@ -62,19 +62,16 @@
   <Class Name="game.GameField" Collapsed="true">
     <Position X="16.75" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AUAAAFgAQCACABAAAxCAAAESABQIAABIAEAAAQAABAQ=</HashCode>
+      <HashCode>AEAAAFgAQCACABAAAxCAAAESBBQIAABIAEAAAQAAAgQ=</HashCode>
       <FileName>GameField.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="game.GameProcess">
     <Position X="5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QQAggAAAAAAAAAgCQgAAAgBAABQBAABAAAAAAEAAAAA=</HashCode>
+      <HashCode>QAAggAAAAAAAAAgCQgAAAgBAABQAABBAAAAAAEAAAAA=</HashCode>
       <FileName>GameProcess.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="dice" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="game.GameProperties" Collapsed="true">
     <Position X="13.5" Y="4.25" Width="1.5" />
@@ -142,7 +139,7 @@
   <Class Name="game.Turn">
     <Position X="10.5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAABAACAAAAAAAAAgAA=</HashCode>
+      <HashCode>CAAAAAAAAAAAAAAAAAACAAAAAAABAACAAAAAAAAAgAA=</HashCode>
       <FileName>Turn.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -170,7 +167,7 @@
     </TypeIdentifier>
   </Interface>
   <Enum Name="game.BugParts" Collapsed="true">
-    <Position X="11.25" Y="9.5" Width="1.5" />
+    <Position X="10" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAABAIAAAAABAAAAAAACAAAAQAACAAAAAAA=</HashCode>
       <FileName>BugParts.cs</FileName>

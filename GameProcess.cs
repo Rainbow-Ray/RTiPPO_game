@@ -9,7 +9,6 @@ namespace game
 {
     public class GameProcess
     {
-        Dice dice;
         public event EventHandler<GameEventArgs> WonGame;
         public event EventHandler<GameEventArgs> WonRound;
         public event EventHandler<GameEventArgs> NeedNewRound;
@@ -20,8 +19,7 @@ namespace game
         public event EventHandler<GameEventArgs> DrawBug;
         public event EventHandler<GameEventArgs> Wait;
 
-        public GameProcess(Dice dice) {
-            this.dice = dice;
+        public GameProcess() {
         }
 
         public void RaiseEvent(EventHandler<GameEventArgs> Event, GameEventArgs eventArgs) {
