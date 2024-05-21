@@ -12,11 +12,11 @@ namespace game
 
         public Round() {}
         
-        internal void addTurn(Turn turn)
+        public void addTurn(Turn turn)
         {
             turnsOfPlayer.Add(turn);
         }
-        internal Turn getLastTurn() {
+        public Turn getLastTurn() {
             return turnsOfPlayer.Last();
         }
     }

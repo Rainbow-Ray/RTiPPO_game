@@ -56,7 +56,7 @@ namespace game
                 newGame.addPlayers(listBox1.Items);
                 var type = radioButton1.Checked ? "numbers" : "parts";
                 var dice = newGame.createDice(type);
-                GameField game = new GameField(newGame, dice);
+                GameField game = new GameField(newGame);
                 game.ShowDialog();
                 this.Close();
             }
@@ -65,14 +65,14 @@ namespace game
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
-            numericUpDown1.Value = 0;
+            numericUpDown1.Value = 1;
         }
 
         private bool checkFields()
         {
             if (checkBox1.Checked)
             {
-                if (numericUpDown1.Value == 0)
+                if (numericUpDown1.Value < 1)
                 {
                     MessageBox.Show("Введите, до какого количества очков или жучков вы хотите играть", "Не задано количество для выигрыша", MessageBoxButtons.OK);
                     return false;

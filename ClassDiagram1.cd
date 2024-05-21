@@ -40,7 +40,7 @@
   <Class Name="game.Game" Collapsed="true">
     <Position X="8" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAAAAARgwQiQgAAAAEgQhQAABSAAAIAAAAAIgA=</HashCode>
+      <HashCode>AQAAAAAAAAARgwQiQgAAAAGgQhQAABSAAAIAAAAAAgA=</HashCode>
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -132,14 +132,11 @@
       <HashCode>AAAAABAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
       <FileName>Round.cs</FileName>
     </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="turnsOfPlayer" />
-    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="game.Turn">
     <Position X="10.5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAAAAAAAAAAAAAAAAACAAAAAAABAACAAAAAAAAAgAA=</HashCode>
+      <HashCode>CAAAAAAAAAAAAAAAAAACAAAAAAABAACAAAAAAAAAAAA=</HashCode>
       <FileName>Turn.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

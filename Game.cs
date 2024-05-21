@@ -13,7 +13,7 @@ namespace game
         public List<Round> roundList { get; private set; } = new List<Round>();
         public bool isTurnContinuous { get; private set; }
         private bool isPointsToWin { get; set; }
-        private int numberOfBugsToWin { get; set; }
+        private int numberOfBugsToWin { get; set; } = 1;
         private int numberOfPointsToWin { get; set; }
         private List<Player> winners = new List<Player>();
 
@@ -48,7 +48,8 @@ namespace game
 
         public Dice createDice(string type)
         {
-            return new Dice(type);
+            dice = new Dice(type);
+            return dice;
         }
 
         public bool IsLastPlayer(Player player)
@@ -69,14 +70,17 @@ namespace game
         private void startRound()
         {
             newRound();
-            gameProcess.startRound(playerList.First());
+            var eventsArgs = new GameEventArgs(playerList.First());
+            gameProcess.startRound(eventsArgs);
         }
 
         private void startTurn(Player player)
         {
             var round = getLastRound();
             var turn = newTurn(player, round);
-            gameProcess.startTurn(player);
+            var eventargs = new GameEventArgs(player);
+            gameProcess.startTurn(eventargs);
+
         }
 
         private Round newRound()
@@ -98,20 +102,7 @@ namespace game
             return turn;
         }
 
-
-        public List<Player> getWinners()
-        {
-            if (numberOfBugsToWin != 0 || numberOfPointsToWin != 0)
-            {
-                return checkWinners();
-            }
-            else
-            {
-                return checkRoundWinners();
-            }
-        }
-
-        public List<Player> checkWinners()
+        public List<Player> checkGameWinners()
         {
             foreach (var player in playerList)
             {
@@ -152,7 +143,7 @@ namespace game
             a.AppendLine($"{"Игрок",-30} {"Очки",5}");
             foreach (var player in playerList)
             {
-                a.AppendLine($"{player.name,-30} {player.score,5}");
+                a.AppendLine($"{player.name,-30} {player.score,-5}");
                 a.AppendLine($"");
             }
             return a.ToString();
@@ -186,25 +177,24 @@ namespace game
             var firstPlayer = playerList.First();
             if (IsLastPlayer(player))
             {
+                var gameWinners = checkGameWinners();
                 var roundWinners = checkRoundWinners();
                 //Два игрока могут выиграть, например при игре до 5 очков
                 //var roundWinners = gameProperties.playerList;
                 //gameProperties.playerList[0].score = 5;
                 //gameProperties.playerList[1].score = 5;
 
-                if (roundWinners.Count > 0)
+                if (gameWinners.Count > 0)
                 {
-                    var gameWinners = getWinners();
-                    if (gameWinners.Count > 0)
-                    {
-                        gameProcess.finishGame(gameWinners, formatPlayersScore());
-                    }
-                    else
-                    {
-                        gameProcess.finishRound(roundWinners, "Выигран раунд");
+                    var eventsArgs = new GameEventArgs(gameWinners, formatPlayersScore());
+                    gameProcess.finishGame(eventsArgs);
+                }
+                else if (roundWinners.Count > 0)
+                {
+                        var eventargs = new GameEventArgs(roundWinners, formatPlayersScore());
+                        gameProcess.finishRound(eventargs);
                         startRound();
                         startTurn(firstPlayer);
-                    }
                 }
                 else
                 {

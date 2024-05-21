@@ -14,14 +14,14 @@ namespace game
         public int numberOfBugs { get; private set; } = 0;
         public Bug currentBug { get; private set; } = null;
 
-        public Player(String name, int id) {
+        public Player(string name, int id) {
             this.name = name;
             this.id = id;
         }
 
-        public void addScore(int value) { score += value; }
-        public void addNumberOfBugs(int value) { numberOfBugs += value; }
-        internal void createCurrentBug() {
+        private void addScore(int value) { score += value; }
+        private void addNumberOfBugs(int value) { numberOfBugs += value; }
+        public void createCurrentBug() {
             var bug = new Bug();
             this.currentBug = bug; 
         }

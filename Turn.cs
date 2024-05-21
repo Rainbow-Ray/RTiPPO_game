@@ -27,10 +27,5 @@ namespace game
         {
             return currentPlayer.addPart(rollResult.result);
         }
-
-        internal void setRollResult(IRollResult roll)
-        {
-            rollResult = roll;
-        }
     }
 }

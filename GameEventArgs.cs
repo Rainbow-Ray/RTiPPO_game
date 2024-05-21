@@ -13,8 +13,6 @@ namespace game
         public Player player { get; set; }
         public IRollResult rollResult { get; set; }
         public Bug bug { get; set; }
-
-        public GameEventArgs() { }
         
         public GameEventArgs(Player player, IRollResult rollResult = null, Bug bug = null)
         {

@@ -29,15 +29,13 @@ namespace game
                 Event(this, eventArgs);
             }
         }
-        public void startRound(Player firstPlayer)
+        public void startRound(GameEventArgs e)
         {
-            var eventsArgs = new GameEventArgs(firstPlayer);
-            RaiseEvent(NeedNewRound, eventsArgs);
+            RaiseEvent(NeedNewRound, e);
         }
-        public void startTurn(Player player)
+        public void startTurn(GameEventArgs e)
         {
-            var eventsArgs = new GameEventArgs(player);
-            RaiseEvent(NeedNewTurn, eventsArgs);
+            RaiseEvent(NeedNewTurn, e);
         }
         public bool throwDice(Turn turn, bool isPartAdded)
         {
@@ -53,14 +51,13 @@ namespace game
 
             return isPartAdded;
         }
-        internal void finishRound(List<Player> roundWinners, string v)
+        public void finishRound(GameEventArgs e)
         {
-            RaiseEvent(WonRound, new GameEventArgs(roundWinners, "Выигран раунд"));
+            RaiseEvent(WonRound, e);
         }
-        internal void finishGame(List<Player> winners, string scoreTable)
+        public void finishGame(GameEventArgs e)
         {
-            var eventsArgs = new GameEventArgs(winners, scoreTable);
-            RaiseEvent(WonGame, eventsArgs);
+            RaiseEvent(WonGame, e);
         }
     }
 }

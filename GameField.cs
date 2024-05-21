@@ -46,17 +46,6 @@ namespace game
             game.StartGame();
         }
 
-        private void Game_WonRound(object sender, GameEventArgs e)
-        {
-            label1.Text = (e.playersList.Count > 1) ? "Раунд выиграли игроки " : "Раунд выиграл";
-            foreach (var player in e.playersList)
-            {
-                label1.Text += player.name + ", ";
-            }
-            label1.Text = label1.Text.Trim().Substring(0, label1.Text.Length - 2);
-            label1.Update();
-            Wait(1000);
-        }
 
         private void Game_Wait(object sender, GameEventArgs e)
         {
@@ -93,7 +82,24 @@ namespace game
         private void Game_WonGame(object sender, GameEventArgs e)
         {
             declareWin(e.playersList, e.result);
+            this.Close();
         }
+
+        private void Game_WonRound(object sender, GameEventArgs e)
+        {
+            /*
+            label1.Text = (e.playersList.Count > 1) ? "Раунд выиграли игроки " : "Раунд выиграл";
+            foreach (var player in e.playersList)
+            {
+                label1.Text += player.name + ", ";
+            }
+            label1.Text = label1.Text.Trim().Substring(0, label1.Text.Length - 2);*/
+
+            declareWin(e.playersList, e.result);
+            label1.Update();
+            Wait(1000);
+        }
+
 
 
         public class Coords
@@ -214,8 +220,9 @@ namespace game
             }
             MessageBox.Show(congrats, "Есть победитель!", MessageBoxButtons.OK);
             MessageBox.Show(playersScore, "Счет игроков", MessageBoxButtons.OK);
-            Close();
         }
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
