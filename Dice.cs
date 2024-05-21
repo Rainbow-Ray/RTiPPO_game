@@ -19,11 +19,11 @@ namespace game
                     new BugPart(BugParts.Tail, 6, 5) };
 
 
-        
+        /*
         public int Testresult = 0;
         public int count = 0;
         public bool oneLeg = true;
-        
+        */
 
     public Dice(String type)
         {
