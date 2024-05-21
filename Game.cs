@@ -51,11 +51,11 @@ namespace game
             return new Dice(type);
         }
 
-        internal bool IsLastPlayer(Player player)
+        public bool IsLastPlayer(Player player)
         {
             return player.id >= playerList.Count - 1;
         }
-        internal Round getLastRound()
+        public Round getLastRound()
         {
             return roundList.Last();
         }
@@ -79,7 +79,7 @@ namespace game
             gameProcess.startTurn(player);
         }
 
-        internal Round newRound()
+        private Round newRound()
         {
             var round = new Round();
             roundList.Add(round);
@@ -91,7 +91,7 @@ namespace game
             return round;
         }
 
-        internal Turn newTurn(Player player, Round round)
+        private Turn newTurn(Player player, Round round)
         {
             var turn = new Turn(player);
             round.addTurn(turn);
@@ -99,7 +99,7 @@ namespace game
         }
 
 
-        internal List<Player> getWinners()
+        public List<Player> getWinners()
         {
             if (numberOfBugsToWin != 0 || numberOfPointsToWin != 0)
             {
@@ -133,7 +133,7 @@ namespace game
             return winners;
         }
 
-        internal List<Player> checkRoundWinners()
+        public List<Player> checkRoundWinners()
         {
             var winners = new List<Player>();
             foreach (var player in playerList)
@@ -146,7 +146,7 @@ namespace game
             return winners;
         }
 
-        internal string formatPlayersScore()
+        public string formatPlayersScore()
         {
             StringBuilder a = new StringBuilder();
             a.AppendLine($"{"Игрок",-30} {"Очки",5}");
@@ -158,8 +158,7 @@ namespace game
             return a.ToString();
         }
 
-
-        internal void throwDice()
+        public void throwDice()
         {
             var round = getLastRound();
             var turn = round.getLastTurn();
@@ -167,10 +166,10 @@ namespace game
             var isPartAdded = turn.addPart();
             gameProcess.throwDice(turn, isPartAdded);
 
-            nextMove(isPartAdded, turn);
+            nextMove(turn, isPartAdded);
         }
 
-        internal void nextMove(bool isPartAdded, Turn turn)
+        private void nextMove(Turn turn, bool isPartAdded)
         {
             if (!isTurnContinuous || (!isPartAdded && isTurnContinuous))
             {
@@ -182,7 +181,7 @@ namespace game
             }
         }
 
-        public void nextPlayer(Player player)
+        private void nextPlayer(Player player)
         {
             var firstPlayer = playerList.First();
             if (IsLastPlayer(player))
