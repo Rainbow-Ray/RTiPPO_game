@@ -148,6 +148,7 @@ namespace game
 
         private void GameField_Load(object sender, EventArgs e)
         {
+            this.BackColor = Color.FromArgb(163, 210, 168);
             var count = 0;
             var x = 13;
             var isBigRes = true;

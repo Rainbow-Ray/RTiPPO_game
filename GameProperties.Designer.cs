@@ -43,6 +43,7 @@ namespace game
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -53,9 +54,9 @@ namespace game
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(30, 13);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(166, 20);
+            this.checkBox1.Size = new System.Drawing.Size(172, 20);
             this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Игра с продолжение ";
+            this.checkBox1.Text = "Игра с продолжением";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
@@ -111,7 +112,7 @@ namespace game
             // 
             this.button1.Location = new System.Drawing.Point(30, 388);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 50);
+            this.button1.Size = new System.Drawing.Size(200, 33);
             this.button1.TabIndex = 8;
             this.button1.Text = "Добавить";
             this.button1.UseVisualStyleBackColor = true;
@@ -119,9 +120,9 @@ namespace game
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(607, 388);
+            this.button2.Location = new System.Drawing.Point(236, 443);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(181, 50);
+            this.button2.Size = new System.Drawing.Size(229, 50);
             this.button2.TabIndex = 9;
             this.button2.Text = "Начать игру";
             this.button2.UseVisualStyleBackColor = true;
@@ -140,7 +141,7 @@ namespace game
             // 
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Location = new System.Drawing.Point(30, 140);
+            this.groupBox1.Location = new System.Drawing.Point(30, 145);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 100);
             this.groupBox1.TabIndex = 12;
@@ -152,7 +153,7 @@ namespace game
             this.groupBox2.Controls.Add(this.radioButton4);
             this.groupBox2.Controls.Add(this.radioButton3);
             this.groupBox2.Controls.Add(this.numericUpDown1);
-            this.groupBox2.Location = new System.Drawing.Point(218, 12);
+            this.groupBox2.Location = new System.Drawing.Point(30, 39);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(200, 100);
             this.groupBox2.TabIndex = 13;
@@ -188,7 +189,7 @@ namespace game
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(461, 13);
+            this.checkBox2.Location = new System.Drawing.Point(236, 5);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(217, 36);
             this.checkBox2.TabIndex = 14;
@@ -205,11 +206,21 @@ namespace game
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(33, 250);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 16);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Игроки:";
+            // 
             // GameProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(477, 505);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.groupBox2);
@@ -248,5 +259,6 @@ namespace game
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label1;
     }
 }

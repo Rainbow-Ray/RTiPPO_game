@@ -143,7 +143,7 @@ namespace game
             a.AppendLine($"{"Игрок",-30} {"Очки",5}");
             foreach (var player in playerList)
             {
-                a.AppendLine($"{player.name,-30} {player.score,-5}");
+                a.AppendLine($"{player.name,-30} {player.score,5}");
                 a.AppendLine($"");
             }
             return a.ToString();
