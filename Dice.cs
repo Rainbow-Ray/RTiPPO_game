@@ -18,13 +18,6 @@ namespace game
                     new BugPart(BugParts.Legs, 3, 4),
                     new BugPart(BugParts.Tail, 6, 5) };
 
-
-        /*
-        public int Testresult = 0;
-        public int count = 0;
-        public bool oneLeg = true;
-        */
-
     public Dice(String type)
         {
             this.type = type;
@@ -41,25 +34,8 @@ namespace game
 
             }
             else
-            {
-                /*
-                if (count == 2)
-                {
-                    Testresult += 1;
-                    count = 0;
-                    if (Testresult == 5 && oneLeg)
-                    {
-                        count = 0;
-                        Testresult = 4;
-                        oneLeg = false;
-                    }
-                }
-
-                count += 1;
-                return new RollResultPart(parts[Testresult]);*/
-        
+            {        
                 return new RollResultPart(parts[result]);
-
             }
         }
     }

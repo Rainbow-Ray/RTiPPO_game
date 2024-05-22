@@ -87,14 +87,6 @@ namespace game
 
         private void Game_WonRound(object sender, GameEventArgs e)
         {
-            /*
-            label1.Text = (e.playersList.Count > 1) ? "Раунд выиграли игроки " : "Раунд выиграл";
-            foreach (var player in e.playersList)
-            {
-                label1.Text += player.name + ", ";
-            }
-            label1.Text = label1.Text.Trim().Substring(0, label1.Text.Length - 2);*/
-
             declareWin(e.playersList, e.result);
             label1.Update();
             Wait(1000);
@@ -223,8 +215,6 @@ namespace game
             MessageBox.Show(playersScore, "Счет игроков", MessageBoxButtons.OK);
         }
 
-
-
         private void button1_Click(object sender, EventArgs e)
         {
             game.throwDice();
@@ -236,23 +226,12 @@ namespace game
             button1.Enabled = true;
         }
 
-        private void drawBug(Player player, String result)
-        {
-            var label = bugLabels[player.id];
-            label.Text += result;
-            label.Text += "\n";
-        }
-
         private void drawBug(Player player, IRollResult result)
         {
             var label = bugLabels[player.id];
             var panel = panels[player.id];
             Bitmap image = getImage(player.currentBug, result);
             panel.BackgroundImage = image;
-
-            //label.Text += result;
-            //label.Text += "\n";
-
         }
 
         private Bitmap getImage(Bug bug, IRollResult result)

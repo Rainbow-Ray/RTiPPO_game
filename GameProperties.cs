@@ -99,38 +99,5 @@ namespace game
                 listBox1.Items.Remove(player);
             }
         }
-
-
-
-
-        //private void enterPointsToWin(int number)
-        //{
-        //   // newGame.numberOfBugsToWin = number;
-        //}
-
-        //private void enterNewPlayer(string name)
-        //{
-        //    //newGame.addPlayer(name);
-        //}
-
-        //private void chooseIfGameIsContinuous(bool choice)
-        //{
-        //   //newGame.isTurnContinuous = choice;
-        //}
-
-        //private void chooseDiceType(string type)
-        //{
-        //}
-
-        //private void chooseBugsOrPointsToWin(bool result)
-        //{
-        //    //newGame.isPointsToWin = result;
-        //}
-
-        //private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    //numericUpDown1.Enabled = radioButton3.Checked ? true : false;
-        //    //numericUpDown1.Value = 1;
-        //}
     }
 }
