@@ -36,20 +36,21 @@ namespace game
             this.turnResult = new System.Windows.Forms.Label();
             this.rollResultPanel = new System.Windows.Forms.Panel();
             this.panelBackground = new System.Windows.Forms.Panel();
+            this.panelBorder = new System.Windows.Forms.Panel();
             this.rollResultPanel.SuspendLayout();
             this.panelBackground.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(637, 131);
+            this.button1.Location = new System.Drawing.Point(637, 130);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(151, 62);
             this.button1.TabIndex = 0;
             this.button1.Text = "Бросить кубик";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
             // 
             // label1
             // 
@@ -64,7 +65,7 @@ namespace game
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 131);
+            this.label2.Location = new System.Drawing.Point(10, 130);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(129, 16);
             this.label2.TabIndex = 2;
@@ -88,21 +89,34 @@ namespace game
             // 
             // rollResultPanel
             // 
-            this.rollResultPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.rollResultPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.rollResultPanel.Controls.Add(this.rollResultlabel);
-            this.rollResultPanel.Location = new System.Drawing.Point(5, 4);
+            this.rollResultPanel.Location = new System.Drawing.Point(7, 6);
+            this.rollResultPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rollResultPanel.Name = "rollResultPanel";
-            this.rollResultPanel.Size = new System.Drawing.Size(100, 100);
+            this.rollResultPanel.Size = new System.Drawing.Size(107, 98);
             this.rollResultPanel.TabIndex = 5;
             // 
             // panelBackground
             // 
             this.panelBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panelBackground.Controls.Add(this.rollResultPanel);
-            this.panelBackground.Location = new System.Drawing.Point(14, 154);
+            this.panelBackground.Location = new System.Drawing.Point(13, 154);
+            this.panelBackground.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelBackground.Name = "panelBackground";
-            this.panelBackground.Size = new System.Drawing.Size(110, 110);
+            this.panelBackground.Size = new System.Drawing.Size(120, 111);
             this.panelBackground.TabIndex = 6;
+            // 
+            // panelBorder
+            // 
+            this.panelBorder.BackColor = System.Drawing.Color.Transparent;
+            this.panelBorder.BackgroundImage = global::game.Properties.Resources.border;
+            this.panelBorder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelBorder.Location = new System.Drawing.Point(16, 298);
+            this.panelBorder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelBorder.Name = "panelBorder";
+            this.panelBorder.Size = new System.Drawing.Size(160, 148);
+            this.panelBorder.TabIndex = 7;
             // 
             // GameField
             // 
@@ -115,6 +129,8 @@ namespace game
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panelBackground);
+            this.Controls.Add(this.panelBorder);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GameField";
             this.Text = "Игра";
             this.Load += new System.EventHandler(this.GameField_Load);
@@ -135,5 +151,6 @@ namespace game
         private System.Windows.Forms.Label turnResult;
         private System.Windows.Forms.Panel rollResultPanel;
         private System.Windows.Forms.Panel panelBackground;
+        private System.Windows.Forms.Panel panelBorder;
     }
 }
