@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace game
 {
@@ -25,9 +17,9 @@ namespace game
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(textBox1.Text.Length < 1)
+            if (textBox1.Text.Length < 1)
             {
-                MessageBox.Show("Введите имя","Игрок без имени", MessageBoxButtons.OK);
+                MessageBox.Show("Введите имя", "Игрок без имени", MessageBoxButtons.OK);
             }
             else
             {

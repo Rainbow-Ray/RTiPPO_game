@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace game
 {
@@ -13,8 +10,8 @@ namespace game
         public Player player { get; set; }
         public IRollResult rollResult { get; set; }
         public Bug bug { get; set; }
-        public bool isAdded {  get; set; }
-        
+        public bool isAdded { get; set; }
+
         public GameEventArgs(IRollResult rollResult, bool isAdded = false)
         {
             this.rollResult = rollResult;

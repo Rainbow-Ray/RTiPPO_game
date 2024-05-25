@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace game
 {
@@ -10,13 +7,14 @@ namespace game
     {
         private List<Turn> turnsOfPlayer { get; set; } = new List<Turn>();
 
-        public Round() {}
-        
+        public Round() { }
+
         public void addTurn(Turn turn)
         {
             turnsOfPlayer.Add(turn);
         }
-        public Turn getLastTurn() {
+        public Turn getLastTurn()
+        {
             return turnsOfPlayer.Last();
         }
     }

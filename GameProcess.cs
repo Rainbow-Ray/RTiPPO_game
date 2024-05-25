@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace game
 {
@@ -21,12 +16,14 @@ namespace game
         public event EventHandler<GameEventArgs> NextPlayerMove;
         public event EventHandler<GameEventArgs> RollResultAddedOrNot;
 
-        public GameProcess() {
+        public GameProcess()
+        {
         }
 
-        public void RaiseEvent(EventHandler<GameEventArgs> Event, GameEventArgs eventArgs) {
+        public void RaiseEvent(EventHandler<GameEventArgs> Event, GameEventArgs eventArgs)
+        {
             EventHandler<GameEventArgs> eventHandler = Event;
-            if (Event!= null)
+            if (Event != null)
             {
                 Event(this, eventArgs);
             }

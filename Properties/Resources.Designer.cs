@@ -93,6 +93,26 @@ namespace game.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap borderGreen {
+            get {
+                object obj = ResourceManager.GetObject("borderGreen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap borderRed {
+            get {
+                object obj = ResourceManager.GetObject("borderRed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BugAntennaes {
             get {
                 object obj = ResourceManager.GetObject("BugAntennaes", resourceCulture);

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace game
@@ -20,7 +18,8 @@ namespace game
         private Dice dice { get; set; }
         public GameProcess gameProcess { get; private set; }
 
-        public Game(bool isTurnContinuous, bool isPointsToWin, int numberOfPointsToWin) {
+        public Game(bool isTurnContinuous, bool isPointsToWin, int numberOfPointsToWin)
+        {
             this.isTurnContinuous = isTurnContinuous;
             this.isPointsToWin = isPointsToWin;
             if (isPointsToWin)
@@ -199,10 +198,10 @@ namespace game
                 }
                 else if (roundWinners.Count > 0)
                 {
-                        var eventargs = new GameEventArgs(roundWinners, formatPlayersScore());
-                        gameProcess.finishRound(eventargs);
-                        startRound();
-                        startTurn(firstPlayer);
+                    var eventargs = new GameEventArgs(roundWinners, formatPlayersScore());
+                    gameProcess.finishRound(eventargs);
+                    startRound();
+                    startTurn(firstPlayer);
                 }
                 else
                 {

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace game
+﻿namespace game
 {
     public class Player
     {
@@ -14,16 +8,18 @@ namespace game
         public int numberOfBugs { get; private set; } = 0;
         public Bug currentBug { get; private set; } = null;
 
-        public Player(string name, int id) {
+        public Player(string name, int id)
+        {
             this.name = name;
             this.id = id;
         }
 
         private void addScore(int value) { score += value; }
         private void addNumberOfBugs(int value) { numberOfBugs += value; }
-        public void createCurrentBug() {
+        public void createCurrentBug()
+        {
             var bug = new Bug();
-            this.currentBug = bug; 
+            this.currentBug = bug;
         }
 
         public bool isBugComplete() { return currentBug.getState() == BugState.complete; }

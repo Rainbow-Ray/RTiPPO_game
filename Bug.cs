@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace game
 {
@@ -16,7 +12,7 @@ namespace game
             this.state = BugState.no_body;
         }
 
-        public BugState getState(){ return state; }
+        public BugState getState() { return state; }
 
         public bool changeState(BugPart result)
         {

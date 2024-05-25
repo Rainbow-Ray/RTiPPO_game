@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace game
+﻿namespace game
 {
     public class BugPart
     {
@@ -28,7 +22,7 @@ namespace game
                 case BugParts.Head:
                     return "Голова";
                 case BugParts.Eyes:
-                    return "Глаза";                    
+                    return "Глаза";
                 case BugParts.Antennaes:
                     return "Усики";
                 case BugParts.Legs:

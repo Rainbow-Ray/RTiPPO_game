@@ -1,17 +1,9 @@
 ﻿using game.Properties;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace game
 {
@@ -37,8 +29,8 @@ namespace game
             panelBorder.BackColor = Color.Transparent;
             this.BackColor = Color.FromArgb(142, 191, 163);
             var count = 0;
-            var x = 13;
-            var panelLabelcoords = getCoords(x, 270, 150, 200, game.playerList.Count, true);
+            var x = 20;
+            var playerLabelcoords = getCoords(x, 260, 150, 200, game.playerList.Count, true);
             var panelncoords = getCoords(x, 295, 150, 200, game.playerList.Count, true);
             var panelBugncoords = getCoords(x, 285, 150, 200, game.playerList.Count, true);
             if (game.playerList.Count > 4)
@@ -47,12 +39,12 @@ namespace game
             }
             foreach (var player in game.playerList)
             {
-                Label panelLabeln = new Label();
-                this.Controls.Add(panelLabeln);
-                panelLabeln.Text = player.name;
-                panelLabeln.Location = new Point(panelLabelcoords[player.id].x, panelLabelcoords[player.id].y);
-                panelLabeln.Name = $"panelLabel{count}";
-                panelLabeln.Size = new Size(58, 17);
+                Label playerLabeln = new Label();
+                this.Controls.Add(playerLabeln);
+                playerLabeln.Text = player.name;
+                playerLabeln.Location = new Point(playerLabelcoords[player.id].x, playerLabelcoords[player.id].y);
+                playerLabeln.Name = $"panelLabel{count}";
+                playerLabeln.Size = new Size(58, 17);
 
                 Panel paneln = new Panel();
                 Controls.Add(paneln);
@@ -95,15 +87,15 @@ namespace game
         {
             if (e.isAdded)
             {
-                panelBackground.BackColor = Color.Green;
+                panelBackground.BackgroundImage = Resources.borderGreen;
             }
             else
             {
-                panelBackground.BackColor = Color.Red;
+                panelBackground.BackgroundImage = Resources.borderRed;
             }
         }
 
-        private void  GameProcess_NextPlayerMove(object sender, GameEventArgs e)
+        private void GameProcess_NextPlayerMove(object sender, GameEventArgs e)
         {
             turnResult.Text = e.result;
         }
@@ -115,7 +107,7 @@ namespace game
         }
         private void clean()
         {
-            panelBackground.BackColor = Color.FromArgb(163, 210, 168);
+            panelBackground.BackgroundImage = null;
             turnResult.Text = "";
             rollResultPanel.BackgroundImage = null;
             button1.Enabled = true;
@@ -205,7 +197,7 @@ namespace game
             var newX = startX;
             if (isHighRes)
             {
-                startY = (int)(startY/ 1.25);
+                startY = (int)(startY / 1.25);
             }
 
             for (int i = 0; i < count; i++)
@@ -254,7 +246,7 @@ namespace game
             else { isFirstTurn = false; }
 
             var location = panels[id].Location;
-            panelBorder.Location = new Point(location.X - 5, location.Y - 5);
+            panelBorder.Location = new Point(location.X - 10, location.Y - 8);
             panelBorder.Visible = true;
 
             label1.Text = $"{name}, ваш ход";
@@ -314,4 +306,4 @@ namespace game
             }
         }
     }
-    }
+}
