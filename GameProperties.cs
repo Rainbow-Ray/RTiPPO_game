@@ -48,7 +48,7 @@ namespace game
         {
             if (checkFields())
             {
-                var isPointsToWin = radioButton4.Checked;
+                var isPointsToWin = (radioButton4.Checked && checkBox1.Checked);
                 var ifTurnIsContinuous = checkBox2.Checked;
                 var numberToWin = int.Parse(numericUpDown1.Value.ToString());
 

@@ -33,6 +33,11 @@ namespace game
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.rollResultlabel = new System.Windows.Forms.Label();
+            this.turnResult = new System.Windows.Forms.Label();
+            this.rollResultPanel = new System.Windows.Forms.Panel();
+            this.panelBackground = new System.Windows.Forms.Panel();
+            this.rollResultPanel.SuspendLayout();
+            this.panelBackground.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -67,10 +72,35 @@ namespace game
             // rollResultlabel
             // 
             this.rollResultlabel.AutoSize = true;
-            this.rollResultlabel.Location = new System.Drawing.Point(13, 168);
+            this.rollResultlabel.Location = new System.Drawing.Point(13, 9);
             this.rollResultlabel.Name = "rollResultlabel";
             this.rollResultlabel.Size = new System.Drawing.Size(0, 16);
             this.rollResultlabel.TabIndex = 3;
+            // 
+            // turnResult
+            // 
+            this.turnResult.AutoSize = true;
+            this.turnResult.Location = new System.Drawing.Point(323, 50);
+            this.turnResult.Name = "turnResult";
+            this.turnResult.Size = new System.Drawing.Size(0, 16);
+            this.turnResult.TabIndex = 4;
+            // 
+            // rollResultPanel
+            // 
+            this.rollResultPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.rollResultPanel.Controls.Add(this.rollResultlabel);
+            this.rollResultPanel.Location = new System.Drawing.Point(5, 4);
+            this.rollResultPanel.Name = "rollResultPanel";
+            this.rollResultPanel.Size = new System.Drawing.Size(100, 100);
+            this.rollResultPanel.TabIndex = 5;
+            // 
+            // panelBackground
+            // 
+            this.panelBackground.Controls.Add(this.rollResultPanel);
+            this.panelBackground.Location = new System.Drawing.Point(14, 154);
+            this.panelBackground.Name = "panelBackground";
+            this.panelBackground.Size = new System.Drawing.Size(110, 110);
+            this.panelBackground.TabIndex = 6;
             // 
             // GameField
             // 
@@ -78,13 +108,17 @@ namespace game
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.rollResultlabel);
+            this.Controls.Add(this.turnResult);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.panelBackground);
             this.Name = "GameField";
             this.Text = "Игра";
             this.Load += new System.EventHandler(this.GameField_Load);
+            this.rollResultPanel.ResumeLayout(false);
+            this.rollResultPanel.PerformLayout();
+            this.panelBackground.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -96,5 +130,8 @@ namespace game
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label rollResultlabel;
+        private System.Windows.Forms.Label turnResult;
+        private System.Windows.Forms.Panel rollResultPanel;
+        private System.Windows.Forms.Panel panelBackground;
     }
 }

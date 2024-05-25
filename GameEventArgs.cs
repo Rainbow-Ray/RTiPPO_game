@@ -13,7 +13,14 @@ namespace game
         public Player player { get; set; }
         public IRollResult rollResult { get; set; }
         public Bug bug { get; set; }
+        public bool isAdded {  get; set; }
         
+        public GameEventArgs(IRollResult rollResult, bool isAdded = false)
+        {
+            this.rollResult = rollResult;
+            this.isAdded = isAdded;
+        }
+
         public GameEventArgs(Player player, IRollResult rollResult = null, Bug bug = null)
         {
             this.player = player;

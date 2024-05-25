@@ -113,7 +113,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\BugTail.png" />
     <None Include="Resources\BugLegsR.png" />
@@ -125,6 +124,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BugAntennaes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eyes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\head.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\legs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\antennaes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\body.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -164,10 +164,18 @@ namespace game
         {
             if (!isTurnContinuous || (!isPartAdded && isTurnContinuous))
             {
+                var result = isPartAdded ? "Часть подошла!" : "Часть не подходит.";
+                result += "\n Передаем ход следующему игроку";
+                var eventArgs = new GameEventArgs(result);
+                gameProcess.nextMove(eventArgs);
                 nextPlayer(turn.currentPlayer);
             }
             else
             {
+                var result = "Часть подошла! \n Передаем ход следующему игроку";
+                var eventArgs = new GameEventArgs(result);
+                gameProcess.nextMove(eventArgs);
+
                 startTurn(turn.currentPlayer);
             }
         }

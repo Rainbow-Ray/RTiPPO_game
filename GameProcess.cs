@@ -18,6 +18,8 @@ namespace game
         public event EventHandler<GameEventArgs> LabelUpdate;
         public event EventHandler<GameEventArgs> DrawBug;
         public event EventHandler<GameEventArgs> Wait;
+        public event EventHandler<GameEventArgs> NextPlayerMove;
+        public event EventHandler<GameEventArgs> RollResultAddedOrNot;
 
         public GameProcess() {
         }
@@ -40,15 +42,14 @@ namespace game
         public bool throwDice(Turn turn, bool isPartAdded)
         {
             var result = turn.rollResult;
-            RaiseEvent(LabelChange, new GameEventArgs(result.getResultName()));
+            RaiseEvent(LabelChange, new GameEventArgs(result));
+            RaiseEvent(RollResultAddedOrNot, new GameEventArgs(null, isPartAdded));
             RaiseEvent(LabelUpdate, null);
 
             if (isPartAdded)
             {
                 RaiseEvent(DrawBug, new GameEventArgs(turn.currentPlayer, result));
             }
-            RaiseEvent(Wait, null);
-
             return isPartAdded;
         }
         public void finishRound(GameEventArgs e)
@@ -58,6 +59,12 @@ namespace game
         public void finishGame(GameEventArgs e)
         {
             RaiseEvent(WonGame, e);
+        }
+
+        internal void nextMove(GameEventArgs eventArgs)
+        {
+            RaiseEvent(NextPlayerMove, eventArgs);
+            RaiseEvent(Wait, null);
         }
     }
 }

@@ -42,15 +42,41 @@ namespace game
             gameProcess.DrawBug += Game_DrawBug;
             gameProcess.Wait += Game_Wait;
             gameProcess.WonRound += Game_WonRound;
+            gameProcess.NextPlayerMove += GameProcess_NextPlayerMove;
+            gameProcess.RollResultAddedOrNot += GameProcess_RollResultAddedOrNot;
 
             game.StartGame();
         }
 
+        public void GameProcess_RollResultAddedOrNot(object sender, GameEventArgs e)
+        {
+            if (e.isAdded)
+            {
+                panelBackground.BackColor = Color.Green;
+            }
+            else
+            {
+                panelBackground.BackColor = Color.Red;
+            }
+        }
+
+        private void GameProcess_NextPlayerMove(object sender, GameEventArgs e)
+        {
+            turnResult.Text = e.result;
+            turnResult.Update();
+        }
 
         private void Game_Wait(object sender, GameEventArgs e)
         {
             button1.Enabled = false;
-            Wait(500);
+            Wait(800);
+            clean();
+        }
+        private void clean()
+        {
+            panelBackground.BackColor = Color.FromArgb(163, 210, 168);
+            turnResult.Text = "";
+            rollResultPanel.BackgroundImage = null;
         }
 
         private void Game_DrawBug(object sender, GameEventArgs e)
@@ -65,8 +91,37 @@ namespace game
 
         private void Game_LabelChange(object sender, GameEventArgs e)
         {
-            var result = e.result;
-            rollResultlabel.Text = result;
+            var result = e.rollResult;
+            if (result is RollResultNumber)
+            {
+                rollResultlabel.Text = result.getResultName();
+            }
+            else
+            {
+                rollResultPanel.BackgroundImage = setImagePart(result.getResultName());
+
+            }
+        }
+
+        private Bitmap setImagePart(string name)
+        {
+            switch (name)
+            {
+                case "Туловище":
+                    return Resources.body;
+                case "Голова":
+                    return Resources.head;
+                case "Усики":
+                    return Resources.antennaes;
+                case "Глаза":
+                    return Resources.eyes;
+                case "Ножки":
+                    return Resources.legs;
+                case "Хвост":
+                    return Resources.tail;
+                default:
+                    return Resources.body;
+            }
         }
 
         private void Game_NeedNewTurn(object sender, GameEventArgs e)
