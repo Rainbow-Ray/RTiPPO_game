@@ -21,6 +21,7 @@ namespace game
         List<Label> bugLabels = new List<Label>();
         List<Panel> panels = new List<Panel>();
         GameProcess gameProcess;
+        bool processing = false;
 
         public GameField()
         {
@@ -68,7 +69,6 @@ namespace game
 
         private void Game_Wait(object sender, GameEventArgs e)
         {
-            button1.Enabled = false;
             Wait(800);
             clean();
         }
@@ -77,6 +77,9 @@ namespace game
             panelBackground.BackColor = Color.FromArgb(163, 210, 168);
             turnResult.Text = "";
             rollResultPanel.BackgroundImage = null;
+            this.processing = false;
+            button1.Enabled = true;
+
         }
 
         private void Game_DrawBug(object sender, GameEventArgs e)
@@ -92,6 +95,7 @@ namespace game
         private void Game_LabelChange(object sender, GameEventArgs e)
         {
             var result = e.rollResult;
+
             if (result is RollResultNumber)
             {
                 rollResultlabel.Text = result.getResultName();
@@ -195,7 +199,7 @@ namespace game
 
         private void GameField_Load(object sender, EventArgs e)
         {
-            this.BackColor = Color.FromArgb(163, 210, 168);
+            this.BackColor = Color.FromArgb(142, 191, 163);
             var count = 0;
             var x = 13;
             var isBigRes = true;
@@ -272,13 +276,13 @@ namespace game
 
         private void button1_Click(object sender, EventArgs e)
         {
+            button1.Enabled = false;
             game.throwDice();
         }
 
         private void Wait(int time)
         {
             Thread.Sleep(time);
-            button1.Enabled = true;
         }
 
         private void drawBug(Player player, IRollResult result)
@@ -314,6 +318,11 @@ namespace game
                 default:
                     return Resources.Bugbody;
             }
+        }
+
+        private void button1_MouseClick(object sender, MouseEventArgs e)
+        {
+
         }
     }
     }

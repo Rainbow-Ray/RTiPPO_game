@@ -49,6 +49,7 @@ namespace game
             this.button1.Text = "Бросить кубик";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
             // 
             // label1
             // 
@@ -87,7 +88,7 @@ namespace game
             // 
             // rollResultPanel
             // 
-            this.rollResultPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.rollResultPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.rollResultPanel.Controls.Add(this.rollResultlabel);
             this.rollResultPanel.Location = new System.Drawing.Point(5, 4);
             this.rollResultPanel.Name = "rollResultPanel";
@@ -96,6 +97,7 @@ namespace game
             // 
             // panelBackground
             // 
+            this.panelBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panelBackground.Controls.Add(this.rollResultPanel);
             this.panelBackground.Location = new System.Drawing.Point(14, 154);
             this.panelBackground.Name = "panelBackground";
