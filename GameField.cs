@@ -68,7 +68,6 @@ namespace game
             }
             panelBorder.SendToBack();
 
-
             gameProcess.WonGame += Game_WonGame;
             gameProcess.NeedNewRound += Game_NeedNewRound;
             gameProcess.NeedNewTurn += Game_NeedNewTurn;
@@ -179,17 +178,6 @@ namespace game
             declareWin(e.playersList, e.result);
         }
 
-        public class Coords
-        {
-            public int x;
-            public int y;
-
-            public Coords(int X, int Y)
-            {
-                x = X; y = Y;
-            }
-
-        }
 
         private List<Coords> getCoords(int startX, int startY, int offsetX, int offsetY, int count, bool isHighRes)
         {
@@ -306,4 +294,17 @@ namespace game
             }
         }
     }
+
+
+    public class Coords
+    {
+        public int x;
+        public int y;
+
+        public Coords(int X, int Y)
+        {
+            x = X; y = Y;
+        }
+    }
+
 }
