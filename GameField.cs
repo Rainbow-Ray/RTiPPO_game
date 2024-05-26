@@ -4,16 +4,17 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace game
 {
     public partial class GameField : Form
     {
-        Game game;
-        List<Label> bugLabels = new List<Label>();
-        List<Panel> panels = new List<Panel>();
-        GameProcess gameProcess;
-        bool isFirstTurn = true;
+        private Game game;
+        private List<Label> bugLabels = new List<Label>();
+        private List<Panel> panels = new List<Panel>();
+        private GameProcess gameProcess;
+        private bool isFirstTurn = true;
 
         public GameField()
         {
@@ -26,18 +27,41 @@ namespace game
             gameProcess = game.gameProcess;
 
             InitializeComponent();
-            panelBorder.BackColor = Color.Transparent;
-            this.BackColor = Color.FromArgb(142, 191, 163);
-            var count = 0;
+            InitializePlayersFields(game.playerList);
+            SubscribeOnGameProcess();
+
+            game.StartGame();
+        }
+
+        private void SubscribeOnGameProcess()
+        {
+            gameProcess.WonGame += GameProcess_WonGame;
+            gameProcess.NeedNewRound += GameProcess_NeedNewRound;
+            gameProcess.NeedNewTurn += GameProcess_NeedNewTurn;
+            gameProcess.LabelChange += GameProcess_LabelChange;
+            gameProcess.LabelUpdate += GameProcess_LabelUpdate;
+            gameProcess.DrawBug += GameProcess_DrawBug;
+            gameProcess.Wait += GameProcess_Wait;
+            gameProcess.WonRound += GameProcess_WonRound;
+            gameProcess.NextPlayerMove += GameProcess_NextPlayerMove;
+            gameProcess.RollResultAddedOrNot += GameProcess_RollResultAddedOrNot;
+        }
+
+        private void InitializePlayersFields(List<Player> players)
+        {
             var x = 20;
-            var playerLabelcoords = getCoords(x, 260, 150, 200, game.playerList.Count, true);
-            var panelncoords = getCoords(x, 295, 150, 200, game.playerList.Count, true);
-            var panelBugncoords = getCoords(x, 285, 150, 200, game.playerList.Count, true);
-            if (game.playerList.Count > 4)
+            var count = 0;
+
+            if (players.Count > 4)
             {
-                this.Height += 200;
+                Height += 200;
             }
-            foreach (var player in game.playerList)
+
+            var playerLabelcoords = getCoords(x, 260, 150, 200, players.Count, true);
+            var panelncoords = getCoords(x, 295, 150, 200, players.Count, true);
+            var panelBugncoords = getCoords(x, 285, 150, 200, players.Count, true);
+
+            foreach (var player in players)
             {
                 Label playerLabeln = new Label();
                 this.Controls.Add(playerLabeln);
@@ -67,19 +91,6 @@ namespace game
                 count += 1;
             }
             panelBorder.SendToBack();
-
-            gameProcess.WonGame += Game_WonGame;
-            gameProcess.NeedNewRound += Game_NeedNewRound;
-            gameProcess.NeedNewTurn += Game_NeedNewTurn;
-            gameProcess.LabelChange += Game_LabelChange;
-            gameProcess.LabelUpdate += Game_LabelUpdate;
-            gameProcess.DrawBug += Game_DrawBug;
-            gameProcess.Wait += Game_Wait;
-            gameProcess.WonRound += Game_WonRound;
-            gameProcess.NextPlayerMove += GameProcess_NextPlayerMove;
-            gameProcess.RollResultAddedOrNot += GameProcess_RollResultAddedOrNot;
-
-            game.StartGame();
         }
 
         public void GameProcess_RollResultAddedOrNot(object sender, GameEventArgs e)
@@ -99,9 +110,9 @@ namespace game
             turnResult.Text = e.result;
         }
 
-        private async void Game_Wait(object sender, GameEventArgs e)
+        private async void GameProcess_Wait(object sender, GameEventArgs e)
         {
-            await Task.Delay(TimeSpan.FromSeconds(1));
+            await Task.Delay(TimeSpan.FromSeconds(0));
             clean();
         }
         private void clean()
@@ -112,17 +123,17 @@ namespace game
             button1.Enabled = true;
         }
 
-        private void Game_DrawBug(object sender, GameEventArgs e)
+        private void GameProcess_DrawBug(object sender, GameEventArgs e)
         {
             drawBug(e.player, e.rollResult);
         }
 
-        private void Game_LabelUpdate(object sender, GameEventArgs e)
+        private void GameProcess_LabelUpdate(object sender, GameEventArgs e)
         {
             label1.Update();
         }
 
-        private void Game_LabelChange(object sender, GameEventArgs e)
+        private void GameProcess_LabelChange(object sender, GameEventArgs e)
         {
             var result = e.rollResult;
 
@@ -136,48 +147,35 @@ namespace game
             }
         }
 
-        private Bitmap setImagePart(string name)
-        {
-            switch (name)
-            {
-                case "Туловище":
-                    return Resources.body;
-                case "Голова":
-                    return Resources.head;
-                case "Усики":
-                    return Resources.antennaes;
-                case "Глаза":
-                    return Resources.eyes;
-                case "Ножки":
-                    return Resources.legs;
-                case "Хвост":
-                    return Resources.tail;
-                default:
-                    return Resources.body;
-            }
-        }
 
-        private void Game_NeedNewTurn(object sender, GameEventArgs e)
+        private void GameProcess_NeedNewTurn(object sender, GameEventArgs e)
         {
             startTurn(e.player.name, e.player.id);
         }
 
-        private void Game_NeedNewRound(object sender, GameEventArgs e)
+        private void GameProcess_NeedNewRound(object sender, GameEventArgs e)
         {
-            startRound();
+            foreach (var label in bugLabels)
+            {
+                label.Text = "";
+            }
+            foreach (var panel in panels)
+            {
+                panel.Controls.Clear();
+                panel.BackgroundImage = null;
+            }
         }
 
-        private void Game_WonGame(object sender, GameEventArgs e)
+        private void GameProcess_WonGame(object sender, GameEventArgs e)
         {
             declareWin(e.playersList, e.result);
-            this.Close();
+            Close();
         }
 
-        private void Game_WonRound(object sender, GameEventArgs e)
+        private void GameProcess_WonRound(object sender, GameEventArgs e)
         {
             declareWin(e.playersList, e.result);
         }
-
 
         private List<Coords> getCoords(int startX, int startY, int offsetX, int offsetY, int count, bool isHighRes)
         {
@@ -208,28 +206,11 @@ namespace game
             return list;
         }
 
-        private void GameField_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void startRound()
-        {
-            foreach (var label in bugLabels)
-            {
-                label.Text = "";
-            }
-            foreach (var panel in panels)
-            {
-                panel.Controls.Clear();
-                panel.BackgroundImage = null;
-            }
-        }
-
         private async void startTurn(string name, int id)
         {
             if (!isFirstTurn)
             {
-                await Task.Delay(TimeSpan.FromSeconds(1));
+                await Task.Delay(TimeSpan.FromSeconds(0));
             }
             else { isFirstTurn = false; }
 
@@ -267,6 +248,27 @@ namespace game
             panel.BackgroundImage = image;
         }
 
+        private Bitmap setImagePart(string name)
+        {
+            switch (name)
+            {
+                case "Туловище":
+                    return Resources.body;
+                case "Голова":
+                    return Resources.head;
+                case "Усики":
+                    return Resources.antennaes;
+                case "Глаза":
+                    return Resources.eyes;
+                case "Ножки":
+                    return Resources.legs;
+                case "Хвост":
+                    return Resources.tail;
+                default:
+                    return Resources.body;
+            }
+        }
+
         private Bitmap getImage(Bug bug, IRollResult result)
         {
             switch (bug.getState())
@@ -295,7 +297,6 @@ namespace game
         }
     }
 
-
     public class Coords
     {
         public int x;
@@ -306,5 +307,4 @@ namespace game
             x = X; y = Y;
         }
     }
-
 }

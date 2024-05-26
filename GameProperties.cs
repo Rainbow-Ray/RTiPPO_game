@@ -42,7 +42,7 @@ namespace game
             {
                 var isPointsToWin = (radioButton4.Checked && checkBox1.Checked);
                 var ifTurnIsContinuous = checkBox2.Checked;
-                var numberToWin = int.Parse(numericUpDown1.Value.ToString());
+                var numberToWin = checkBox1.Checked ? int.Parse(numericUpDown1.Value.ToString()) : 1;
 
                 Game newGame = new Game(ifTurnIsContinuous, isPointsToWin, numberToWin);
                 newGame.addPlayers(listBox1.Items);
@@ -52,7 +52,6 @@ namespace game
                 game.ShowDialog();
                 this.Close();
             }
-
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
