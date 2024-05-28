@@ -258,13 +258,13 @@ namespace game
                 case "Голова":
                     return Resources.head;
                 case "Усики":
-                    return Resources.antennaes;
+                    return Resources.antennaesHD;
                 case "Глаза":
-                    return Resources.eyes;
+                    return Resources.eyesHD;
                 case "Ножки":
-                    return Resources.legs;
+                    return Resources.legsHD;
                 case "Хвост":
-                    return Resources.tail;
+                    return Resources.tailHD;
                 default:
                     return Resources.body;
             }
