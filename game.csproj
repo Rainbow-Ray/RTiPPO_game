@@ -51,6 +51,9 @@
     <Compile Include="BugParts.cs" />
     <Compile Include="BugState.cs" />
     <Compile Include="Dice.cs" />
+    <Compile Include="MessageBoxMonospace.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="StartMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>

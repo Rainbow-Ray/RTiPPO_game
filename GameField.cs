@@ -112,7 +112,7 @@ namespace game
 
         private async void GameProcess_Wait(object sender, GameEventArgs e)
         {
-            await Task.Delay(TimeSpan.FromSeconds(0));
+            await Task.Delay(TimeSpan.FromSeconds(1));
             clean();
         }
         private void clean()
@@ -210,7 +210,7 @@ namespace game
         {
             if (!isFirstTurn)
             {
-                await Task.Delay(TimeSpan.FromSeconds(0));
+                await Task.Delay(TimeSpan.FromSeconds(1));
             }
             else { isFirstTurn = false; }
 
@@ -231,7 +231,8 @@ namespace game
                 congrats += "\n";
             }
             MessageBox.Show(congrats, "Есть победитель!", MessageBoxButtons.OK);
-            MessageBox.Show(playersScore, "Счет игроков", MessageBoxButtons.OK);
+            var score = new MessageBoxMonospace(playersScore, "Счет игроков");
+            score.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)

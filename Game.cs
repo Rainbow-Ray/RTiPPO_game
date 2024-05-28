@@ -139,11 +139,10 @@ namespace game
         public string formatPlayersScore()
         {
             StringBuilder a = new StringBuilder();
-            a.AppendLine($"{"Игрок",-30} {"Очки",5}");
+            a.AppendLine($"{"Игрок",-30} {"Очки",4}");
             foreach (var player in playerList)
             {
-                a.AppendLine($"{player.name,-30} {player.score,5}");
-                a.AppendLine($"");
+                a.AppendLine($"{player.name, -30}{player.score, 4}");
             }
             return a.ToString();
         }

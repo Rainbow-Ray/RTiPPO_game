@@ -43,6 +43,7 @@ namespace game
             // 
             // button1
             // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.Location = new System.Drawing.Point(637, 102);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
@@ -135,6 +136,7 @@ namespace game
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panelBackground);
             this.Controls.Add(this.panelBorder);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GameField";
             this.Text = "Игра";
